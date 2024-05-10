@@ -1,0 +1,562 @@
+Gerencial:
+    Principal:
+    Cadastro:
+    Consulta:
+    Servico:
+    Agua:
+    Ceramica:
+    Reajunte:
+    Tijolos:
+<Principal>:
+    name: "principal"
+    MDBoxLayout:
+        orientation: "vertical"
+        MDTopAppBar:
+            title: "ConstruFácil"
+        MDLabel:
+    FloatLayout:            
+        MDRaisedButton:
+            text:'[size=25][b]Cadastrar Cliente[/b]'
+            line_color:'red'
+            pos_hint: {'x': .3, 'y': .75}
+            size_hint: .5, 0.1
+            on_release:
+                app.root.current = 'cadastro'
+        MDRaisedButton:
+            text:'[size=25][b]Consultar Cliente[/b]'
+            line_color:'red'
+            pos_hint: {'x': .3, 'y': .63}
+            size_hint: .5, 0.1
+            on_release:
+                app.root.current = 'consulta'
+        MDRaisedButton:
+            text:'[size=25][b]Valor do Serviço[/b]'
+            line_color:'red'
+            pos_hint: {'x': .3, 'y': .51}
+            size_hint: .5, 0.1
+            on_release:
+                app.root.current = 'servico'
+        MDRaisedButton:
+            text:'[size=25][b]Capacidade de Água[/b]'
+            line_color:'red'
+            pos_hint: {'x': .3, 'y': .39}
+            size_hint: .5, 0.1
+            on_release:
+                app.root.current = 'agua'
+        MDRaisedButton:
+            text:'[size=25][b]Quantidade de Cerâmica[/b]'
+            line_color:'red'
+            pos_hint: {'x': .3, 'y': .27}
+            size_hint: .5, 0.1
+            on_release:
+                app.root.current = 'ceramica'
+        MDRaisedButton:
+            text:'[size=25][b]Quantidade de Reajunte[/b]'
+            line_color:'red'
+            pos_hint: {'x': .3, 'y': .15}
+            size_hint: .5, 0.1
+            on_release:
+                app.root.current = 'reajunte'
+        MDRaisedButton:
+            text:'[size=25][b]Quantidade de Tijolos[/b]'
+            line_color:'red'
+            pos_hint: {'x': .3, 'y': .03}
+            size_hint: .5, 0.1
+            on_release:
+                app.root.current = 'tijolos'     
+<Cadastro>:
+    name: "cadastro"
+    MDBoxLayout:
+        orientation: "vertical"
+        MDTopAppBar:
+            title: "Cadastro"
+        MDLabel:
+    FloatLayout:      
+        TextInput:
+            id:caixa_texto1
+            text:''
+            font_size: 30
+            multiline:False
+            pos_hint:{'x': .2,'y':.1}
+            size_hint: .4, 0.1
+        TextInput:
+            id:caixa_texto2
+            text:''
+            font_size: 30
+            multiline:False
+            pos_hint:{'x': .2,'y':.3}
+            size_hint: .4, 0.1
+        TextInput:
+            id:caixa_texto3
+            text:''
+            font_size: 30
+            multiline:False
+            pos_hint:{'x': .2,'y':.5}
+            size_hint: .4, 0.1
+        MDLabel:
+            text:'E-mail'
+            multiline:False
+            theme_text_color: "Custom"
+            text_color: "#fff00"
+            font_size: 25
+            pos_hint:{'x': .04,'y':.5}
+            size_hint: .5, 0.1
+            background_color: (1,0,0,1)
+        MDLabel:
+            text:'Nome'
+            multiline:False
+            theme_text_color: "Custom"
+            text_color: "#fff00"
+            font_size: 25
+            pos_hint:{'x': .04,'y':.3}
+            size_hint: .5, 0.1
+            background_color: (1,0,0,1)
+        MDLabel:
+            text:'Telefone'
+            multiline:False
+            theme_text_color: "Custom"
+            text_color: "#fff00"
+            font_size: 25
+            pos_hint:{'x': .04,'y':.1}
+            size_hint: .5, 0.1
+            background_color: (1,0,0,1)
+        MDLabel:
+            id:resposta
+            text: ''
+            theme_text_color: "Custom"
+            text_color: "#fff00"
+            font_size: 30
+            pos_hint:{'x': .3,'y':.3}
+        MDFillRoundFlatButton:
+            text:'Cadastrar'
+            font_size: 25
+            pos_hint: {'x': .7, 'y': .3}
+            size_hint: .2, 0.1
+            background_color: 'blue'
+            on_press:
+                root.cadastrar()
+                root.limpar()
+        MDFillRoundFlatButton:
+            text:'Voltar'
+            pos_hint:{'x': .75,'y':.09}
+            font_size: 25
+            size_hint: .1, 0.1
+            on_release:
+                app.root.current = 'principal'
+<Consulta>:
+    name: "consulta"
+    MDBoxLayout:
+        orientation: "vertical"
+        MDTopAppBar:
+            title: "Consulta"
+        MDLabel:
+    FloatLayout:      
+        TextInput:
+            id:caixa_texto1
+            text:''
+            font_size: 30
+            multiline:False
+            pos_hint:{'x': .2,'y':.3}
+            size_hint: .4, 0.1
+        MDLabel:
+            text:'Nome'
+            multiline:False
+            theme_text_color: "Custom"
+            text_color: "#fff00"
+            font_size: 25
+            pos_hint:{'x': .04,'y':.3}
+            size_hint: .5, 0.1
+            background_color: (1,0,0,1)
+        MDLabel:
+            id:resposta
+            text: ''
+            theme_text_color: "Custom"
+            text_color: "#fff00"
+            font_size: 30
+            pos_hint:{'x': .13,'y':.3}
+        MDFillRoundFlatButton:
+            text:'Buscar'
+            font_size: 25
+            pos_hint: {'x': .7, 'y': .3}
+            size_hint: .2, 0.1
+            background_color: 'blue'
+            on_press:
+                root.buscar()
+                root.limpar() 
+        MDFillRoundFlatButton:
+            text:'Voltar'
+            pos_hint:{'x': .75,'y':.09}
+            font_size: 25
+            size_hint: .1, 0.1
+            on_release:
+                app.root.current = 'principal'
+<Reajunte>:
+    name: "reajunte"
+    MDBoxLayout:
+        orientation: "vertical"
+        MDTopAppBar:
+            title: "Reajunte"
+        MDLabel:
+    FloatLayout:     
+        TextInput:
+            id:caixa_texto1
+            text:''
+            font_size: 30
+            multiline:False
+            pos_hint:{'x': .5,'y':.1}
+            size_hint: .1, 0.1
+        TextInput:
+            id:caixa_texto2
+            text:''
+            font_size: 30
+            multiline:False
+            pos_hint:{'x': .5,'y':.3}
+            size_hint: .1, 0.1
+        TextInput:
+            id:caixa_texto3
+            text:''
+            font_size: 30
+            multiline:False
+            pos_hint:{'x': .5,'y':.5}
+            size_hint: .1, 0.1
+        MDLabel:
+            text:'Largurada Cerâmica (cm)'
+            multiline:False
+            theme_text_color: "Custom"
+            text_color: "#fff00"
+            font_size: 25
+            pos_hint:{'x': .04,'y':.1}
+            size_hint: .5, 0.1
+            background_color: (1,0,0,1)
+        MDLabel:
+            text:'Comprimento da Cerâmica (cm)'
+            multiline:False
+            theme_text_color: "Custom"
+            text_color: "#fff00"
+            font_size: 25
+            pos_hint:{'x': .04,'y':.3}
+            size_hint: .5, 0.1
+            background_color: (1,0,0,1)
+        MDLabel:
+            text:'Metragem de Cerâmica (m²)'
+            multiline:False
+            theme_text_color: "Custom"
+            text_color: "#fff00"
+            font_size: 25
+            pos_hint:{'x': .04,'y':.5}
+            size_hint: .4, 0.1
+            background_color: (1,0,0,1)
+        MDLabel:
+            id:resposta
+            text: ''
+            theme_text_color: "Custom"
+            text_color: "#fff00"
+            font_size: 30
+            pos_hint:{'x': .63,'y':.1}
+        MDFillRoundFlatButton:
+            text:'Calcular'
+            font_size: 25
+            pos_hint: {'x': .7, 'y': .3}
+            size_hint: .2, 0.1
+            background_color: 'blue'
+            on_press:
+                root.calcular()
+                root.limpar() 
+        MDFillRoundFlatButton:
+            text:'Voltar'
+            pos_hint:{'x': .75,'y':.09}
+            font_size: 25
+            size_hint: .1, 0.1
+            on_release:
+                app.root.current = 'principal' 
+<Agua>:
+    name: "agua"
+    MDBoxLayout:
+        orientation: "vertical"
+        MDTopAppBar:
+            title: "Quantidade de Água"
+        MDLabel:
+    FloatLayout:
+        TextInput:
+            id:caixa_texto1
+            text:''
+            font_size: 30
+            multiline:False
+            pos_hint:{'x': .35,'y':.1}
+            size_hint: .1, 0.1
+        TextInput:
+            id:caixa_texto2
+            text:''
+            font_size: 30
+            multiline:False
+            pos_hint:{'x': .35,'y':.3}
+            size_hint: .1, 0.1
+        TextInput:
+            id:caixa_texto3
+            text:''
+            font_size: 30
+            multiline:False
+            pos_hint:{'x': .35,'y':.5}
+            size_hint: .1, 0.1
+        MDLabel:
+            text:'Altura (m)'
+            multiline:False
+            theme_text_color: 'Custom'
+            text_color: "#fff00"
+            font_size: 25
+            pos_hint:{'x': .1,'y':.1}
+            size_hint: .3, 0.1
+            background_color: (1,0,0,1)
+        MDLabel:
+            text:'Largura (m)'
+            multiline:False
+            theme_text_color: "Custom"
+            text_color: "#fff00"
+            font_size: 25
+            pos_hint:{'x': .1,'y':.3}
+            size_hint: .3, 0.1
+            background_color: (1,0,0,1)
+        MDLabel:
+            text:'Comprimento (m)'
+            multiline:False
+            theme_text_color: "Custom"
+            text_color: "#fff00"
+            font_size: 25
+            pos_hint:{'x': .1,'y':.5}
+            size_hint: .3, 0.1
+            background_color: (1,0,0,1)
+        MDLabel:
+            id:resposta
+            text: ''
+            theme_text_color: "Custom"
+            text_color: "#fff00"
+            font_size: 45
+            pos_hint:{'x': .5,'y':.1}
+        MDFillRoundFlatButton:
+            text:'Calcular'
+            font_size: 25
+            pos_hint: {'x': .7, 'y': .3}
+            size_hint: .2, 0.1
+            background_color: 'blue'
+            on_press:
+                root.calcular()
+                root.limpar()  
+        MDFillRoundFlatButton:
+            text:'Voltar'
+            pos_hint:{'x': .75,'y':.09}
+            font_size: 25
+            size_hint: .1, 0.1
+            on_release:
+                app.root.current = 'principal'    
+<Ceramica>:
+    name: "ceramica" 
+    MDBoxLayout:
+        orientation: "vertical"
+        MDTopAppBar:
+            title: "Quantidade de Cerâmica"
+        MDLabel:
+    FloatLayout:
+        TextInput:
+            id:caixa_texto1
+            text:''
+            font_size: 30
+            multiline:False
+            pos_hint:{'x': .37,'y':.1}
+            size_hint: .1, 0.1
+        TextInput:
+            id:caixa_texto2
+            text:''
+            font_size: 30
+            multiline:False
+            pos_hint:{'x': .37,'y':.3}
+            size_hint: .1, 0.1
+        MDLabel:
+            text:'Comprimento (m)'
+            multiline:False
+            theme_text_color: "Custom"
+            text_color: "#fff00"
+            font_size: 25
+            pos_hint:{'x': .1,'y':.1}
+            size_hint: .3, 0.1
+            background_color: (1,0,0,1)
+        MDLabel:
+            text:'Largura (m)'
+            multiline:False
+            theme_text_color: "Custom"
+            text_color: "#fff00"
+            font_size: 25
+            pos_hint:{'x': .1,'y':.3}
+            size_hint: .3, 0.1
+            background_color: (1,0,0,1)
+        MDLabel:
+            id:resposta
+            text: ''
+            theme_text_color: "Custom"
+            text_color: "#fff00"
+            font_size: 45
+            pos_hint:{'x': .5,'y':.1}
+        MDFillRoundFlatButton:
+            text:'Calcular'
+            font_size: 25
+            pos_hint: {'x': .7, 'y': .3}
+            size_hint: .2, 0.1
+            background_color: 'blue'
+            on_press:
+                root.calcular()
+                root.limpar() 
+        MDFillRoundFlatButton:
+            text:'Voltar'
+            pos_hint:{'x': .75,'y': .09}
+            font_size: 25
+            size_hint: .1, 0.1
+            on_release:
+                app.root.current = 'principal'        
+<Tijolos>:
+    name: "tijolos"
+    MDBoxLayout:
+        orientation: "vertical"
+        MDTopAppBar:
+            title: "Quantidade de Tijolos"          
+        MDLabel:     
+    FloatLayout:
+        TextInput:
+            id:caixa_texto1
+            text:''
+            font_size: 30
+            multiline:False
+            pos_hint:{'x': .3,'y': .1}
+            size_hint: .1, 0.1
+        TextInput:
+            id:caixa_texto2
+            text:''
+            font_size: 30
+            multiline:False
+            pos_hint:{'x': .3,'y': .3}
+            size_hint: .1, 0.1
+        MDLabel:
+            text:'Altura (m)'
+            multiline:False
+            theme_text_color: "Custom"
+            text_color: "#fff00"
+            font_size: 25
+            pos_hint:{'x': .1,'y': .1}
+            size_hint: .2, 0.1
+            background_color: (1,0,0,1)
+        MDLabel:
+            text:'Largura (m)'
+            multiline:False
+            theme_text_color: "Custom"
+            text_color: "#fff00"
+            font_size: 25
+            pos_hint:{'x': .1,'y': .3}
+            size_hint: .2, 0.1
+            background_color: (1,0,0,1)
+        MDLabel:
+            id:resposta
+            text: ''
+            theme_text_color: "Custom"
+            text_color: "#fff00"
+            font_size: 30
+            pos_hint:{'x': .5,'y': .18}
+        MDLabel:
+            id:resposta2
+            text: ''
+            theme_text_color: "Custom"
+            text_color: "#fff00"
+            font_size: 30
+            pos_hint:{'x': .1,'y':.18}
+        MDFillRoundFlatButton:
+            text:'Calcular'
+            font_size: 25
+            pos_hint: {'x': .7, 'y': .3}
+            size_hint: .2, 0.1
+            background_color: 'blue'
+            on_press:
+                root.calcular()
+                root.limpar() 
+        MDFillRoundFlatButton:
+            text:'Voltar'
+            pos_hint:{'x': .75,'y': .09}
+            font_size: 25
+            size_hint: .1, 0.1
+            on_release:
+                app.root.current = 'principal'      
+<Servico>:
+    name: "servico"
+    MDBoxLayout:
+        orientation: "vertical"
+        MDTopAppBar:
+            title: "Valor do Serviço"          
+        MDLabel:
+    FloatLayout:
+        TextInput:
+            id:caixa_texto1
+            text:'1'
+            font_size: 30
+            multiline:False
+            pos_hint:{'x': .42,'y':.1}
+            size_hint: .1, 0.1
+        TextInput:
+            id:caixa_texto2
+            text:''
+            font_size: 30
+            multiline:False
+            pos_hint:{'x': .42,'y':.3}
+            size_hint: .1, 0.1
+        TextInput:
+            id:caixa_texto3
+            text:''
+            font_size: 30
+            multiline:False
+            pos_hint:{'x': .42,'y':.5}
+            size_hint: .1, 0.1
+        MDLabel:
+            text:'Valor Extra'
+            multiline:False
+            theme_text_color: 'Custom'
+            text_color: "#fff00"
+            font_size: 25
+            pos_hint:{'x': .05,'y':.1}
+            size_hint: .25, 0.1
+            background_color: (1,0,0,1)
+        MDLabel:
+            text:'Metragem Serviço (m²)'
+            multiline:False
+            theme_text_color: "Custom"
+            text_color: "#fff00"
+            font_size: 25
+            pos_hint:{'x': .05,'y':.3}
+            size_hint: .4, 0.1
+            background_color: (1,0,0,1)
+        MDLabel:
+            text:'Valor metro'
+            multiline:False
+            theme_text_color: "Custom"
+            text_color: "#fff00"
+            font_size: 25
+            pos_hint:{'x': .05,'y':.5}
+            size_hint: .25, 0.1
+            background_color: (1,0,0,1)
+        MDLabel:
+            id:resposta
+            text: ''
+            theme_text_color: "Custom"
+            text_color: "#fff00"
+            font_size: 45
+            pos_hint:{'x': .6,'y':.2}
+        MDFillRoundFlatButton:
+            text:'Calcular'
+            font_size: 30
+            pos_hint: {'x': .7, 'y': .3}
+            size_hint: .2, 0.1
+            background_color: 'blue'
+            on_press:
+                root.calcular()  
+                root.limpar()    
+        MDFillRoundFlatButton:
+            text:'Voltar'
+            pos_hint:{'x': .75,'y':.09}
+            font_size: 25
+            size_hint: .1, 0.1
+            on_release:
+                app.root.current = 'principal'   
